@@ -7,8 +7,9 @@
 
 import Foundation
 import AVFoundation
+import GPUImage
 
-public protocol WRSVideoCollectDelegate : NSObjectProtocol {
+public protocol WRSVideoCollectDelegate {
     func collect(collect: WRSVideoCollect, sampleBuffer: CMSampleBuffer);
 }
 
@@ -20,12 +21,7 @@ open class WRSVideoCollect: NSObject, AVCaptureVideoDataOutputSampleBufferDelega
     var videoProcessingQueue: DispatchQueue
     var collectAsYUV: Bool = true
     var delegate: WRSVideoCollectDelegate?
-//    convenience override init() {
-//
-//
-//        self.init(sess)
-//
-//    }
+
     
     deinit {
         stopCollect()

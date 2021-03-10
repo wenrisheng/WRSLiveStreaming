@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0470B63425F762800066CCB7 /* WRSHardCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470B63325F762800066CCB7 /* WRSHardCode.swift */; };
 		04ABD4D625F604D800C998C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABD4D525F604D800C998C2 /* AppDelegate.swift */; };
 		04ABD4D825F604D800C998C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABD4D725F604D800C998C2 /* SceneDelegate.swift */; };
 		04ABD4DA25F604D800C998C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABD4D925F604D800C998C2 /* ViewController.swift */; };
@@ -16,6 +17,12 @@
 		04ABD4ED25F604DA00C998C2 /* WRSLiveStreamingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABD4EC25F604DA00C998C2 /* WRSLiveStreamingTests.swift */; };
 		04ABD4F825F604DA00C998C2 /* WRSLiveStreamingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABD4F725F604DA00C998C2 /* WRSLiveStreamingUITests.swift */; };
 		04ABD51325F60C1600C998C2 /* WRSVideoCollect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABD51225F60C1600C998C2 /* WRSVideoCollect.swift */; };
+		04B3FB9625F8954F00B5BF0C /* VideoCollect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B3FB9525F8954F00B5BF0C /* VideoCollect.swift */; };
+		04B3FBDA25F89A6A00B5BF0C /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B3FBD825F89A6A00B5BF0C /* MainVC.swift */; };
+		04B3FBDB25F89A6A00B5BF0C /* MainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B3FBD925F89A6A00B5BF0C /* MainVC.xib */; };
+		04B3FBF325F8A48900B5BF0C /* GPUImageBeautifyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B3FBF025F8A48900B5BF0C /* GPUImageBeautifyFilter.m */; };
+		04B3FBF425F8A48900B5BF0C /* GPUImageBeautyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B3FBF225F8A48900B5BF0C /* GPUImageBeautyFilter.m */; };
+		8AFA729113BE06809A0D81C7 /* Pods_WRSLiveStreaming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E89A467F31D645E45768466E /* Pods_WRSLiveStreaming.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0470B63325F762800066CCB7 /* WRSHardCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WRSHardCode.swift; sourceTree = "<group>"; };
 		04ABD4D225F604D800C998C2 /* WRSLiveStreaming.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WRSLiveStreaming.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04ABD4D525F604D800C998C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04ABD4D725F604D800C998C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +59,17 @@
 		04ABD4F725F604DA00C998C2 /* WRSLiveStreamingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WRSLiveStreamingUITests.swift; sourceTree = "<group>"; };
 		04ABD4F925F604DA00C998C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04ABD51225F60C1600C998C2 /* WRSVideoCollect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WRSVideoCollect.swift; sourceTree = "<group>"; };
+		04B3FB9525F8954F00B5BF0C /* VideoCollect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollect.swift; sourceTree = "<group>"; };
+		04B3FBD825F89A6A00B5BF0C /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		04B3FBD925F89A6A00B5BF0C /* MainVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainVC.xib; sourceTree = "<group>"; };
+		04B3FBEE25F8A48900B5BF0C /* WRSLiveStreaming-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WRSLiveStreaming-Bridging-Header.h"; sourceTree = "<group>"; };
+		04B3FBEF25F8A48900B5BF0C /* GPUImageBeautifyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageBeautifyFilter.h; sourceTree = "<group>"; };
+		04B3FBF025F8A48900B5BF0C /* GPUImageBeautifyFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageBeautifyFilter.m; sourceTree = "<group>"; };
+		04B3FBF125F8A48900B5BF0C /* GPUImageBeautyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageBeautyFilter.h; sourceTree = "<group>"; };
+		04B3FBF225F8A48900B5BF0C /* GPUImageBeautyFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageBeautyFilter.m; sourceTree = "<group>"; };
+		0B6D186D9A36BB245FB65BEB /* Pods-WRSLiveStreaming.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WRSLiveStreaming.debug.xcconfig"; path = "Target Support Files/Pods-WRSLiveStreaming/Pods-WRSLiveStreaming.debug.xcconfig"; sourceTree = "<group>"; };
+		8E6E5CE4814247046C1DB968 /* Pods-WRSLiveStreaming.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WRSLiveStreaming.release.xcconfig"; path = "Target Support Files/Pods-WRSLiveStreaming/Pods-WRSLiveStreaming.release.xcconfig"; sourceTree = "<group>"; };
+		E89A467F31D645E45768466E /* Pods_WRSLiveStreaming.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WRSLiveStreaming.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AFA729113BE06809A0D81C7 /* Pods_WRSLiveStreaming.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0470B63225F761F10066CCB7 /* Encode */ = {
+			isa = PBXGroup;
+			children = (
+				0470B63325F762800066CCB7 /* WRSHardCode.swift */,
+			);
+			path = Encode;
+			sourceTree = "<group>";
+		};
 		04ABD4C925F604D800C998C2 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +113,8 @@
 				04ABD4EB25F604DA00C998C2 /* WRSLiveStreamingTests */,
 				04ABD4F625F604DA00C998C2 /* WRSLiveStreamingUITests */,
 				04ABD4D325F604D800C998C2 /* Products */,
+				744981AD799B6788AAD08080 /* Pods */,
+				2CC8BD0E1C5E54FA98273AB7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,10 +132,12 @@
 			isa = PBXGroup;
 			children = (
 				04ABD50825F6053500C998C2 /* Sources */,
+				04B3FBD425F89A1600B5BF0C /* Example */,
 				04ABD4D525F604D800C998C2 /* AppDelegate.swift */,
 				04ABD4D725F604D800C998C2 /* SceneDelegate.swift */,
 				04ABD4D925F604D800C998C2 /* ViewController.swift */,
 				04ABD4DB25F604D800C998C2 /* Main.storyboard */,
+				04B3FBEE25F8A48900B5BF0C /* WRSLiveStreaming-Bridging-Header.h */,
 				04ABD4DE25F604DA00C998C2 /* Assets.xcassets */,
 				04ABD4E025F604DA00C998C2 /* LaunchScreen.storyboard */,
 				04ABD4E325F604DA00C998C2 /* Info.plist */,
@@ -134,6 +166,9 @@
 		04ABD50825F6053500C998C2 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				04B3FC0325F8AF3E00B5BF0C /* Util */,
+				04B3FBED25F8A45600B5BF0C /* Filter */,
+				0470B63225F761F10066CCB7 /* Encode */,
 				04ABD51125F60BE000C998C2 /* Collect */,
 			);
 			path = Sources;
@@ -143,8 +178,77 @@
 			isa = PBXGroup;
 			children = (
 				04ABD51225F60C1600C998C2 /* WRSVideoCollect.swift */,
+				04B3FB9525F8954F00B5BF0C /* VideoCollect.swift */,
 			);
 			path = Collect;
+			sourceTree = "<group>";
+		};
+		04B3FBD425F89A1600B5BF0C /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				04B3FBD525F89A3900B5BF0C /* Modules */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		04B3FBD525F89A3900B5BF0C /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				04B3FBD625F89A4000B5BF0C /* Main */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		04B3FBD625F89A4000B5BF0C /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				04B3FBD725F89A4500B5BF0C /* VC */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		04B3FBD725F89A4500B5BF0C /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				04B3FBD825F89A6A00B5BF0C /* MainVC.swift */,
+				04B3FBD925F89A6A00B5BF0C /* MainVC.xib */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		04B3FBED25F8A45600B5BF0C /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				04B3FBEF25F8A48900B5BF0C /* GPUImageBeautifyFilter.h */,
+				04B3FBF025F8A48900B5BF0C /* GPUImageBeautifyFilter.m */,
+				04B3FBF125F8A48900B5BF0C /* GPUImageBeautyFilter.h */,
+				04B3FBF225F8A48900B5BF0C /* GPUImageBeautyFilter.m */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		04B3FC0325F8AF3E00B5BF0C /* Util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		2CC8BD0E1C5E54FA98273AB7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E89A467F31D645E45768466E /* Pods_WRSLiveStreaming.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		744981AD799B6788AAD08080 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0B6D186D9A36BB245FB65BEB /* Pods-WRSLiveStreaming.debug.xcconfig */,
+				8E6E5CE4814247046C1DB968 /* Pods-WRSLiveStreaming.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,9 +258,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04ABD4FC25F604DA00C998C2 /* Build configuration list for PBXNativeTarget "WRSLiveStreaming" */;
 			buildPhases = (
+				00EDC6836BC5ACC55F7AEE47 /* [CP] Check Pods Manifest.lock */,
 				04ABD4CE25F604D800C998C2 /* Sources */,
 				04ABD4CF25F604D800C998C2 /* Frameworks */,
 				04ABD4D025F604D800C998C2 /* Resources */,
+				0D866E5DA0FC52176D912403 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -214,6 +320,7 @@
 				TargetAttributes = {
 					04ABD4D125F604D800C998C2 = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 					};
 					04ABD4E725F604DA00C998C2 = {
 						CreatedOnToolsVersion = 12.4;
@@ -251,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04ABD4E225F604DA00C998C2 /* LaunchScreen.storyboard in Resources */,
+				04B3FBDB25F89A6A00B5BF0C /* MainVC.xib in Resources */,
 				04ABD4DF25F604DA00C998C2 /* Assets.xcassets in Resources */,
 				04ABD4DD25F604D800C998C2 /* Main.storyboard in Resources */,
 			);
@@ -272,15 +380,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		00EDC6836BC5ACC55F7AEE47 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WRSLiveStreaming-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0D866E5DA0FC52176D912403 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WRSLiveStreaming/Pods-WRSLiveStreaming-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WRSLiveStreaming/Pods-WRSLiveStreaming-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WRSLiveStreaming/Pods-WRSLiveStreaming-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		04ABD4CE25F604D800C998C2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				04ABD4DA25F604D800C998C2 /* ViewController.swift in Sources */,
+				04B3FBF425F8A48900B5BF0C /* GPUImageBeautyFilter.m in Sources */,
+				04B3FBF325F8A48900B5BF0C /* GPUImageBeautifyFilter.m in Sources */,
 				04ABD51325F60C1600C998C2 /* WRSVideoCollect.swift in Sources */,
 				04ABD4D625F604D800C998C2 /* AppDelegate.swift in Sources */,
+				0470B63425F762800066CCB7 /* WRSHardCode.swift in Sources */,
+				04B3FB9625F8954F00B5BF0C /* VideoCollect.swift in Sources */,
 				04ABD4D825F604D800C998C2 /* SceneDelegate.swift in Sources */,
+				04B3FBDA25F89A6A00B5BF0C /* MainVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,7 +541,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -441,7 +596,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -453,9 +608,11 @@
 		};
 		04ABD4FD25F604DA00C998C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B6D186D9A36BB245FB65BEB /* Pods-WRSLiveStreaming.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6L6FVV2AKB;
 				INFOPLIST_FILE = WRSLiveStreaming/Info.plist;
@@ -465,6 +622,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wrs.project.WRSLiveStreaming;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WRSLiveStreaming/WRSLiveStreaming-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -472,9 +631,11 @@
 		};
 		04ABD4FE25F604DA00C998C2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E6E5CE4814247046C1DB968 /* Pods-WRSLiveStreaming.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6L6FVV2AKB;
 				INFOPLIST_FILE = WRSLiveStreaming/Info.plist;
@@ -484,6 +645,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wrs.project.WRSLiveStreaming;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WRSLiveStreaming/WRSLiveStreaming-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
