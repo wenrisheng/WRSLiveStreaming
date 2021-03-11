@@ -3,3 +3,4 @@
 //
 
 #import "GPUImageBeautifyFilter.h"
+#import "GPUImageBeautyFilter.h"

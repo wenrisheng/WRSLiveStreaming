@@ -25,6 +25,7 @@
 }
 
 @property (assign, nonatomic) NSUInteger aspectRatio;
+@property (assign, nonatomic) CGRect viewBounds;
 
 // Initialization and teardown
 - (void)commonInit;
@@ -132,7 +133,7 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
+    self.viewBounds = self.bounds;
     // The frame buffer needs to be trashed and re-created when the view size changes.
     if (!CGSizeEqualToSize(self.bounds.size, boundsSizeAtFrameBufferEpoch) &&
         !CGSizeEqualToSize(self.bounds.size, CGSizeZero)) {
@@ -165,8 +166,16 @@
     glGenRenderbuffers(1, &displayRenderbuffer);
     glBindRenderbuffer(GL_RENDERBUFFER, displayRenderbuffer);
 	
-    [[[GPUImageContext sharedImageProcessingContext] context] renderbufferStorage:GL_RENDERBUFFER fromDrawable:(CAEAGLLayer*)self.layer];
+//    [[[GPUImageContext sharedImageProcessingContext] context] renderbufferStorage:GL_RENDERBUFFER fromDrawable:(CAEAGLLayer*)self.layer];
 	
+    if ([NSThread isMainThread] == NO) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[[GPUImageContext sharedImageProcessingContext] context] renderbufferStorage:GL_RENDERBUFFER fromDrawable:(CAEAGLLayer*)self.layer];
+        });
+    } else {
+        [[[GPUImageContext sharedImageProcessingContext] context] renderbufferStorage:GL_RENDERBUFFER fromDrawable:(CAEAGLLayer*)self.layer];
+    }
+    
     GLint backingWidth, backingHeight;
 
     glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &backingWidth);
@@ -232,10 +241,22 @@
 
 - (void)recalculateViewGeometry;
 {
+    if ([NSThread isMainThread] == NO) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self my_recalculateViewGeometry:self.bounds.size];
+        });
+    } else {
+        [self my_recalculateViewGeometry:self.bounds.size];
+    }
+}
+
+- (void)my_recalculateViewGeometry:(CGSize)size;
+{
     runSynchronouslyOnVideoProcessingQueue(^{
         CGFloat heightScaling, widthScaling;
         
-        CGSize currentViewSize = self.bounds.size;
+//        CGSize currentViewSize = self.bounds.size;
+        CGSize currentViewSize = size;
         
         //    CGFloat imageAspectRatio = inputImageSize.width / inputImageSize.height;
         //    CGFloat viewAspectRatio = currentViewSize.width / currentViewSize.height;

@@ -8,15 +8,15 @@
 import Foundation
 import GPUImage
 
-public protocol VideoCollectDelegate: NSObjectProtocol {
-    func collect(collect: VideoCollect, pixelBuffer: Unmanaged<CVPixelBuffer>);
+public protocol WRSVideoCaptureDelegate: NSObjectProtocol {
+    func capture(capture: WRSVideoCapture, pixelBuffer: Unmanaged<CVPixelBuffer>);
 }
 
-public class VideoCollect: NSObject {
+public class WRSVideoCapture: NSObject {
     var videoCamera: GPUImageVideoCamera
-    var beautifyFilter: GPUImageBeautifyFilter
+    var beautifyFilter: GPUImageBeautyFilter
     var gpuImageView: GPUImageView
-    weak var deletate: VideoCollectDelegate?
+    weak var deletate: WRSVideoCaptureDelegate?
 
     var preView: UIView? {
         set {
@@ -43,11 +43,13 @@ public class VideoCollect: NSObject {
     
     init(sessionPreset: AVCaptureSession.Preset, position: AVCaptureDevice.Position) {
         self.videoCamera = GPUImageVideoCamera(sessionPreset: sessionPreset.rawValue, cameraPosition: position)
-        self.beautifyFilter = GPUImageBeautifyFilter()
+        self.beautifyFilter = GPUImageBeautyFilter()
         self.gpuImageView = GPUImageView()
-        
+        self.gpuImageView.fillMode = .preserveAspectRatioAndFill
         super.init()
-        
+        self.videoCamera.horizontallyMirrorRearFacingCamera = false
+        self.videoCamera.horizontallyMirrorFrontFacingCamera = true
+        self.videoCamera.outputImageOrientation = .portrait;
         self.videoCamera.addTarget(self.beautifyFilter)
         self.beautifyFilter.frameProcessingCompletionBlock = {
             [weak self] (gpuImageOutput: GPUImageOutput?, time: CMTime)  in
@@ -62,7 +64,7 @@ public class VideoCollect: NSObject {
     private func proceFrame(gpuImageOutput: GPUImageOutput?, time: CMTime) {
         if let tempDelegate = self.deletate, let imageFrameBuffer = gpuImageOutput?.framebufferForOutput() {
             let pixelBuffer: Unmanaged<CVPixelBuffer> = imageFrameBuffer.pixelBuffer()
-            tempDelegate.collect(collect: self, pixelBuffer: pixelBuffer)
+            tempDelegate.capture(capture: self, pixelBuffer: pixelBuffer)
 //            imageFrameBuffer.pixel
         }
     }

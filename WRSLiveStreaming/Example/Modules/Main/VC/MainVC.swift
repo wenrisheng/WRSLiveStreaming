@@ -9,10 +9,16 @@ import UIKit
 
 class MainVC: UIViewController {
 
+    @IBOutlet weak var preView: UIView!
+    var session: WRSAVSession?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.session = WRSAVSession(sessionPreset: .vga640x480, position: .front)
+        self.session?.preView = self.preView
+        self.session?.startCapture()
     }
 
 
