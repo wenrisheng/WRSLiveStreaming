@@ -23,6 +23,7 @@ public class WRSAVSession: NSObject, WRSVideoCaptureDelegate, WRSHardVideoEncode
         self.videoCapture = WRSVideoCapture(sessionPreset: sessionPreset, position: .front)
         self.videoEncoder = WRSHardVideoEncoder(width: Int32(videoSize.width), height: Int32(videoSize.height))
         super.init()
+        self.videoCapture.deletate = self
         self.videoEncoder.delegate = self
     }
     
@@ -35,11 +36,11 @@ public class WRSAVSession: NSObject, WRSVideoCaptureDelegate, WRSHardVideoEncode
     
     // MARK: - WRSHardVideoEncoderDelegate
     public func videoEncoder(encoder: WRSHardVideoEncoder, didGetSps: Data, pps: Data, timeStamp: UInt64) {
-        
+        print("Get sps pps")
     }
     
     public func videoEncoder(encoder: WRSHardVideoEncoder, didEncoderFrame: Data, timeStamp: UInt64, isKeyFrame: Bool) {
-        
+        print("didEncoderFrame")
     }
     
     public func startCapture() {
