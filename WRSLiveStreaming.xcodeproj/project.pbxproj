@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0415666E25F9A4A600DB0BD7 /* WRSAVSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0415666D25F9A4A600DB0BD7 /* WRSAVSession.swift */; };
-		0470B63425F762800066CCB7 /* WRSHardCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470B63325F762800066CCB7 /* WRSHardCode.swift */; };
+		0470B63425F762800066CCB7 /* WRSHardVideoEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470B63325F762800066CCB7 /* WRSHardVideoEncoder.swift */; };
 		04ABD4D625F604D800C998C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABD4D525F604D800C998C2 /* AppDelegate.swift */; };
 		04ABD4D825F604D800C998C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABD4D725F604D800C998C2 /* SceneDelegate.swift */; };
 		04ABD4DA25F604D800C998C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABD4D925F604D800C998C2 /* ViewController.swift */; };
@@ -45,7 +45,7 @@
 
 /* Begin PBXFileReference section */
 		0415666D25F9A4A600DB0BD7 /* WRSAVSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WRSAVSession.swift; sourceTree = "<group>"; };
-		0470B63325F762800066CCB7 /* WRSHardCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WRSHardCode.swift; sourceTree = "<group>"; };
+		0470B63325F762800066CCB7 /* WRSHardVideoEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WRSHardVideoEncoder.swift; sourceTree = "<group>"; };
 		04ABD4D225F604D800C998C2 /* WRSLiveStreaming.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WRSLiveStreaming.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04ABD4D525F604D800C998C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04ABD4D725F604D800C998C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		0470B63225F761F10066CCB7 /* Encode */ = {
 			isa = PBXGroup;
 			children = (
-				0470B63325F762800066CCB7 /* WRSHardCode.swift */,
+				0470B63325F762800066CCB7 /* WRSHardVideoEncoder.swift */,
 			);
 			path = Encode;
 			sourceTree = "<group>";
@@ -444,7 +444,7 @@
 				04ABD51325F60C1600C998C2 /* WRSVideoCollect.swift in Sources */,
 				0415666E25F9A4A600DB0BD7 /* WRSAVSession.swift in Sources */,
 				04ABD4D625F604D800C998C2 /* AppDelegate.swift in Sources */,
-				0470B63425F762800066CCB7 /* WRSHardCode.swift in Sources */,
+				0470B63425F762800066CCB7 /* WRSHardVideoEncoder.swift in Sources */,
 				04B3FB9625F8954F00B5BF0C /* WRSVideoCapture.swift in Sources */,
 				04ABD4D825F604D800C998C2 /* SceneDelegate.swift in Sources */,
 				04B3FBDA25F89A6A00B5BF0C /* MainVC.swift in Sources */,

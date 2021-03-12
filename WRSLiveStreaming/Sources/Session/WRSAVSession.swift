@@ -8,6 +8,7 @@
 import Foundation
 public class WRSAVSession: NSObject, WRSVideoCaptureDelegate {
     var videoCapture: WRSVideoCapture
+    var videoCode: WRSHardVideoEncoder
     var preView: UIView? {
         set {
             self.videoCapture.preView = newValue
@@ -17,8 +18,9 @@ public class WRSAVSession: NSObject, WRSVideoCaptureDelegate {
         }
     }
     
-    init(sessionPreset: AVCaptureSession.Preset = .vga640x480, position: AVCaptureDevice.Position = .front) {
+    init(sessionPreset: AVCaptureSession.Preset = .vga640x480, position: AVCaptureDevice.Position = .front, videoSize: CGSize) {
         self.videoCapture = WRSVideoCapture(sessionPreset: sessionPreset, position: .front)
+        self.videoCode = WRSHardVideoEncoder(width: Int32(videoSize.width), height: Int32(videoSize.height))
         super.init()
         self.videoCapture.deletate = self
     }

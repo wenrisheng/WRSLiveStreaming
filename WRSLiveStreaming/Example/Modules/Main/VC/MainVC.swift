@@ -16,7 +16,7 @@ class MainVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.session = WRSAVSession(sessionPreset: .vga640x480, position: .front)
+        self.session = WRSAVSession(sessionPreset: .vga640x480, position: .front, videoSize: CGSize(width: 640, height: 360))
         self.session?.preView = self.preView
         self.session?.startCapture()
     }
