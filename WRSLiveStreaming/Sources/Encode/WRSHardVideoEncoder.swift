@@ -38,8 +38,8 @@ public class WRSHardVideoEncoder {
                     return;
                 }
 //                let sampleData =  NSMutableData()
-                let naluStart:[UInt8] = [0x00, 0x00, 0x00, 0x01]
-                let naluStart1:[UInt8] = [0x00, 0x00, 0x01]
+//                let naluStart:[UInt8] = [0x00, 0x00, 0x00, 0x01]
+//                let naluStart1:[UInt8] = [0x00, 0x00, 0x01]
                 
                 let videoEncoder:WRSHardVideoEncoder = unsafeBitCast(tempEncoder, to: WRSHardVideoEncoder.self)
                 let timestamp:UInt64 = UInt64(UInt(bitPattern: tempTimestamp))
@@ -207,7 +207,7 @@ public class WRSHardVideoEncoder {
     }
     
     
-    func encodeVideoData(pixelBuffer: CVImageBuffer, timeStamp: UInt64) -> Void {
+    func encodeVideoData(pixelBuffer: CVImageBuffer, timeStamp: CFTimeInterval) -> Void {
         if let tempCompressionSession = self.compressionSession {
             frameCount += 1
             let presentationTimeStamp: CMTime = CMTime(value: CMTimeValue(frameCount), timescale: CMTimeScale(videoFrameRate))

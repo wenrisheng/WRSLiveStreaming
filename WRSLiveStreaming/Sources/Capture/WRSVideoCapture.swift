@@ -62,7 +62,7 @@ public class WRSVideoCapture: NSObject {
     }
     
     private func proceFrame(gpuImageOutput: GPUImageOutput?, time: CMTime) {
-        if let tempDelegate = self.deletate, let imageFrameBuffer = gpuImageOutput?.framebufferForOutput() {
+        if let tempDelegate = self.deletate, let imageFrameBuffer: GPUImageFramebuffer = gpuImageOutput?.framebufferForOutput() {
             let pixelBuffer: Unmanaged<CVPixelBuffer> = imageFrameBuffer.pixelBuffer()
             tempDelegate.videoCapture(capture: self, pixelBuffer: pixelBuffer)
 //            imageFrameBuffer.pixel
