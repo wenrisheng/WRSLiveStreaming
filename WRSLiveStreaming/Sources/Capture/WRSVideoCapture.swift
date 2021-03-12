@@ -9,7 +9,7 @@ import Foundation
 import GPUImage
 
 public protocol WRSVideoCaptureDelegate: NSObjectProtocol {
-    func capture(capture: WRSVideoCapture, pixelBuffer: Unmanaged<CVPixelBuffer>);
+    func videoCapture(capture: WRSVideoCapture, pixelBuffer: Unmanaged<CVPixelBuffer>);
 }
 
 public class WRSVideoCapture: NSObject {
@@ -64,7 +64,7 @@ public class WRSVideoCapture: NSObject {
     private func proceFrame(gpuImageOutput: GPUImageOutput?, time: CMTime) {
         if let tempDelegate = self.deletate, let imageFrameBuffer = gpuImageOutput?.framebufferForOutput() {
             let pixelBuffer: Unmanaged<CVPixelBuffer> = imageFrameBuffer.pixelBuffer()
-            tempDelegate.capture(capture: self, pixelBuffer: pixelBuffer)
+            tempDelegate.videoCapture(capture: self, pixelBuffer: pixelBuffer)
 //            imageFrameBuffer.pixel
         }
     }

@@ -7,6 +7,10 @@
 
 import Foundation
 import VideoToolbox
+public protocol WRSHardVideoEncoderDelegate: NSObjectProtocol {
+    func videoEncoder(encoder: WRSHardVideoEncoder, didGetSps: Data, pps: Data, timeStamp: UInt64);
+    func videoEncoder(encoder: WRSHardVideoEncoder, didEncoderFrame: Data, timeStamp: UInt64, isKeyFrame: Bool);
+}
 
 public class WRSHardVideoEncoder {
     var compressionSession: VTCompressionSession?
@@ -17,6 +21,8 @@ public class WRSHardVideoEncoder {
     var pps: Data?
     var width: Int32 = 640
     var height: Int32 = 320
+    var delegate: WRSHardVideoEncoderDelegate?
+    
     private var compressioinOutputCallback: VTCompressionOutputCallback?
     
     deinit {
@@ -27,15 +33,16 @@ public class WRSHardVideoEncoder {
         self.width = width
         self.height = height
         self.compressioinOutputCallback  = { (VTref: UnsafeMutableRawPointer?, VTFrameRef: UnsafeMutableRawPointer?, status: OSStatus, infoFlags: VTEncodeInfoFlags, sampleBuffer: CMSampleBuffer?) in
-            if let tempEncoder = VTref, let buffer = sampleBuffer {
+            if let tempEncoder = VTref, let tempTimestamp = VTFrameRef, let buffer = sampleBuffer {
                 if status != noErr { // 有错直接return
                     return;
                 }
-                let sampleData =  NSMutableData()
+//                let sampleData =  NSMutableData()
                 let naluStart:[UInt8] = [0x00, 0x00, 0x00, 0x01]
                 let naluStart1:[UInt8] = [0x00, 0x00, 0x01]
                 
                 let videoEncoder:WRSHardVideoEncoder = unsafeBitCast(tempEncoder, to: WRSHardVideoEncoder.self)
+                let timestamp:UInt64 = UInt64(UInt(bitPattern: tempTimestamp))
                 let isKeyframe = !CFDictionaryContainsKey(unsafeBitCast(CFArrayGetValueAtIndex(CMSampleBufferGetSampleAttachmentsArray(buffer, createIfNecessary: true), 0), to: CFDictionary.self), unsafeBitCast(kCMSampleAttachmentKey_NotSync, to: UnsafeRawPointer.self))
                 if isKeyframe && videoEncoder.sps != nil { // 是的话，CMVideoFormatDescriptionGetH264ParameterSetAtIndex获取sps和pps信息，并转换为二进制写入文件或者进行上传
                     if let format: CMFormatDescription = CMSampleBufferGetFormatDescription(buffer) {
@@ -56,10 +63,15 @@ public class WRSHardVideoEncoder {
                             let ppsStatus: OSStatus = CMVideoFormatDescriptionGetH264ParameterSetAtIndex(format, parameterSetIndex: 1, parameterSetPointerOut: pps, parameterSetSizeOut: ppsLength, parameterSetCountOut: ppsCount, nalUnitHeaderLengthOut: nil)
                             if ppsStatus == noErr {
                                 if let spsPointee = sps.pointee, let ppsPointee = pps.pointee {
-                                    sampleData.append(naluStart, length: naluStart.count)
-                                    sampleData.append(spsPointee, length: spsLength.pointee)
-                                    sampleData.append(naluStart, length: naluStart.count)
-                                    sampleData.append(ppsPointee, length: ppsLength.pointee)
+                                    let spsData = Data(bytes: spsPointee, count: spsLength.pointee)
+                                    let ppsData = Data(bytes: ppsPointee, count: ppsLength.pointee)
+                                    if let tempDelegate = videoEncoder.delegate {
+                                        tempDelegate.videoEncoder(encoder: videoEncoder, didGetSps: spsData, pps: ppsData, timeStamp: timestamp)
+                                    }
+//                                    sampleData.append(naluStart, length: naluStart.count)
+//                                    sampleData.append(spsPointee, length: spsLength.pointee)
+//                                    sampleData.append(naluStart, length: naluStart.count)
+//                                    sampleData.append(ppsPointee, length: ppsLength.pointee)
                                 }
                             }
                             
@@ -99,12 +111,16 @@ public class WRSHardVideoEncoder {
                                 memcpy(&NALUnitLength, tempDataPointer + bufferOffset, AVCCHeaderLength)
                                 NALUnitLength = CFSwapInt32BigToHost(NALUnitLength)
                                 
-                                if isKeyframe {
-                                    sampleData.append(naluStart, length: naluStart.count)
-                                } else {
-                                    sampleData.append(naluStart1, length: naluStart1.count)
+                                let frameData = Data(bytes: tempDataPointer + bufferOffset + AVCCHeaderLength, count: Int(NALUnitLength))
+                                if let tempDelegate = videoEncoder.delegate {
+                                    tempDelegate.videoEncoder(encoder: videoEncoder, didEncoderFrame: frameData, timeStamp: timestamp, isKeyFrame: isKeyframe)
                                 }
-                                sampleData.append(tempDataPointer + bufferOffset + AVCCHeaderLength, length: Int(NALUnitLength))
+//                                if isKeyframe {
+//                                    sampleData.append(naluStart, length: naluStart.count)
+//                                } else {
+//                                    sampleData.append(naluStart1, length: naluStart1.count)
+//                                }
+//                                sampleData.append(tempDataPointer + bufferOffset + AVCCHeaderLength, length: Int(NALUnitLength))
                                 
                                 bufferOffset += (AVCCHeaderLength + Int(NALUnitLength))
 //                                var naluStart:[UInt8] = [UInt8](count: 4, repeatedValue: 0x00)
@@ -167,14 +183,15 @@ public class WRSHardVideoEncoder {
             VTSessionSetProperty(tempCompressionSession, key: kVTCompressionPropertyKey_AverageBitRate, value: averageBitRate)
             
             // CFNumberCreate(_ allocator: CFAllocator!, _ theType: CFNumberType, _ valuePtr: UnsafeRawPointer!) -> CFNumber!
-//            var array: [NSNumber] = [NSNumber(value: Double(bitRate) * 1.5 / 8), NSNumber(value: 1)]
+            var array: Array = [NSNumber(value: Double(bitRate) * 1.5 / 8), NSNumber(value: 1)]
+//            CFArrayCreate(kCFAllocatorDefault, array as CFArray, <#T##numValues: CFIndex##CFIndex#>, <#T##callBacks: UnsafePointer<CFArrayCallBacks>!##UnsafePointer<CFArrayCallBacks>?#>)
 //            let averageBitRate = withUnsafeMutablePointer(to: &array) { ppArray in
 //                CFArrayCreate(kCFAllocatorDefault, ppArray, ppArray.count, nil)
 //            }
 //            CFArrayCreate(_ allocator: CFAllocator!, _ values: UnsafeMutablePointer<UnsafeRawPointer?>!, _ numValues: CFIndex, _ callBacks: UnsafePointer<CFArrayCallBacks>!) -> CFArray
 //            var windowsPointer = UnsafeMutablePointer<UnsafeRawPointer>(array)
 //            let averageBitRate = CFArrayCreate(kCFAllocatorDefault, windowsPointer, array.count, nil)
-//            VTSessionSetProperty(tempCompressionSession, key: kVTCompressionPropertyKey_DataRateLimits, value: averageBitRate)
+//            VTSessionSetProperty(tempCompressionSession, key: kVTCompressionPropertyKey_DataRateLimits, value: array)
             
             //设置实时编码输出（避免延迟）
             VTSessionSetProperty(tempCompressionSession, key: kVTCompressionPropertyKey_RealTime, value: kCFBooleanTrue);

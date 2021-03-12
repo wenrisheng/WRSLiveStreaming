@@ -26,7 +26,7 @@ public class WRSAVSession: NSObject, WRSVideoCaptureDelegate {
     }
     
     // MARK: - WRSVideoCaptureDelegate
-    public func capture(capture: WRSVideoCapture, pixelBuffer: Unmanaged<CVPixelBuffer>) {
+    public func videoCapture(capture: WRSVideoCapture, pixelBuffer: Unmanaged<CVPixelBuffer>) {
         
     }
     
